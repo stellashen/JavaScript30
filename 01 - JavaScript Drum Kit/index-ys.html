@@ -59,7 +59,7 @@
 
 <script>
 // associate the sound and letter by using "data-key" property on divs
-  window.addEventListener('keydown', function(e) {
+  function playSound(e) {
     // select element with the specified field
     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
     const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
@@ -67,7 +67,7 @@
     audio.currentTime = 0; // rewind to the start
     audio.play();
     key.classList.add('playing');
-  });
+  }
 
   function removeTransition(e) {
     if (e.propertyName !== 'transform') return; // skip if it's not a transform
@@ -78,6 +78,8 @@
   keys.forEach(key => {
     key.addEventListener('transitionend', removeTransition);
   })
+
+  window.addEventListener('keydown', playSound);
 </script>
 
 

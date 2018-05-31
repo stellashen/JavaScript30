@@ -1,19 +1,89 @@
 
 # My study notes
 ## 01 - Drum Kit
+### JS Code
+```js
+// associate the sound and letter by using "data-key" property on divs
+function playSound(e) {
+  // select element with the specified field
+  const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+  const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+  if (!audio) return;
+  audio.currentTime = 0; // rewind to the start
+  audio.play();
+  key.classList.add('playing');
+}
+
+function removeTransition(e) {
+  if (e.propertyName !== 'transform') return; // skip if it's not a transform
+  this.classList.remove('playing');
+}
+
+const keys = document.querySelectorAll('.key');
+keys.forEach(key => {
+  key.addEventListener('transitionend', removeTransition);
+})
+
+window.addEventListener('keydown', playSound);
+```
+### Takeaways
+#### Use `console.log` to find out what's going on
 ```js
 window.addEventListener('keydown', function(e) {
   console.log(e);//You can see keyCode is the number defined in 'data-key'
 });
 ```
+<img src="https://github.com/stellashen/JavaScript30/blob/master/01%20-%20JavaScript%20Drum%20Kit/console.png" width="300">
 
-What is "this" here? Use `console.log(this)` to find out:
+What is "this" inside `function removeTransition(e)`? Use `console.log(this)` to find out:
 ```js
 <div data-key="72" class="key">
   <kbd>H</kbd>
   <span class="sound">ride</span>
 </div>
 ```
+
+#### use querySelector with specified field
+for `<audio>` tags and `class="key"`
+```js
+const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+```
+
+#### to play the same sound for multiple times
+Use `audio.currentTime = 0`
+
+#### transition
+I used to use `setTimeOut` but using `transition` in CSS is more convenient!
+```css
+.key {
+  border: .4rem solid black;
+  border-radius: .5rem;
+  margin: 1rem;
+  font-size: 1.5rem;
+  padding: 1rem .5rem;
+  transition: all .07s ease;
+  /* transition to .playing */
+  width: 10rem;
+  text-align: center;
+  color: white;
+  background: rgba(0,0,0,0.4);
+  text-shadow: 0 0 .5rem black;
+}
+
+.playing {
+  transform: scale(1.1);
+  border-color: #ffc600;
+  box-shadow: 0 0 1rem #ffc600;
+}
+```
+
+use 'transitionend' and 'animationend' event
+```js
+key.addEventListener('transitionend', removeTransition);
+```
+Here we run the `removeTransition` function when the transition ends after .07s.
+
 # The original README:
 
 ![](https://javascript30.com/images/JS3-social-share.png)
