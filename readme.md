@@ -1,3 +1,21 @@
+
+# My study notes
+## 01 - Drum Kit
+```js
+window.addEventListener('keydown', function(e) {
+  console.log(e);//You can see keyCode is the number defined in 'data-key'
+});
+```
+
+What is "this" here? Use `console.log(this)` to find out:
+```js
+<div data-key="72" class="key">
+  <kbd>H</kbd>
+  <span class="sound">ride</span>
+</div>
+```
+# The original README:
+
 ![](https://javascript30.com/images/JS3-social-share.png)
 
 # JavaScript30
