@@ -85,6 +85,32 @@ key.addEventListener('transitionend', removeTransition);
 Here we run the `removeTransition` function when the transition ends after .07s.
 
 ## 02 - Clock
+### JS code
+```js
+const secondHand = document.querySelector('.second-hand');
+const minHand = document.querySelector('.min-hand');
+const hourHand = document.querySelector('.hour-hand');
+
+function setDate() {
+  const now = new Date();
+  const seconds = now.getSeconds();
+  const secondsDegrees = (seconds / 60) * 360 + 90; // 90 is the default offset to start from 12 o'clock direction
+  secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+
+  const mins = now.getMinutes();
+  const minsDegrees = (mins / 60) * 360 + (seconds / 60) * 6 + 90;
+  minHand.style.transform = `rotate(${minsDegrees}deg)`;
+
+  const hours = now.getHours();
+  const hoursDegrees = (hours / 12) * 360 + (mins / 60) * 30 + (seconds / 60) * 0.5 + 90;
+  hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+
+}
+
+setInterval(setDate, 1000);
+```
+
+### Takeaways
 Rotate the hands based on the current time.
 
 By default, it rotates around the center of the element. We want to put the pivot point on the right end => Use `transform-origin`.
@@ -94,6 +120,10 @@ By default, it rotates around the center of the element. We want to put the pivo
   /* by default it is 50%*/
 }
 ```
+
+Click the curve symbol to manually adjust the curve for `transition-timing-function`:
+<img src="https://github.com/stellashen/JavaScript30/blob/master/02%20-%20JS%20and%20CSS%20Clock/curve.png" width="300">
+
 
 # The original README:
 
