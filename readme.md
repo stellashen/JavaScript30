@@ -84,6 +84,17 @@ key.addEventListener('transitionend', removeTransition);
 ```
 Here we run the `removeTransition` function when the transition ends after .07s.
 
+## 02 - Clock
+Rotate the hands based on the current time.
+
+By default, it rotates around the center of the element. We want to put the pivot point on the right end => Use `transform-origin`.
+```css
+.hand {
+  transform-origin: 100%;
+  /* by default it is 50%*/
+}
+```
+
 # The original README:
 
 ![](https://javascript30.com/images/JS3-social-share.png)
