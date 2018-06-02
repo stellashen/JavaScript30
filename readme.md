@@ -139,6 +139,15 @@ Click the curve symbol to manually adjust the curve for `transition-timing-funct
 #### `forEach` method of `NodeList`
 Now we can use the `forEach` method of `NodeList` to loop over the HTML elements.
 So we don't need to convert the NodeList to an array.
+<img src="https://github.com/stellashen/JavaScript30/blob/master/03%20-%20CSS%20Variables/nodelist.png
+" width="300">
+
+#### 'change' and 'mousemove' events
+```js
+inputs.forEach(input => input.addEventListener('change', handleUpdate));
+inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
+```
+'change' event only triggers the event when you stop moving the bar; 'mousemove' event will keep updating the value while moving.
 
 # The original README:
 
