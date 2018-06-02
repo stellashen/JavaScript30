@@ -125,11 +125,50 @@ Click the curve symbol to manually adjust the curve for `transition-timing-funct
 <img src="https://github.com/stellashen/JavaScript30/blob/master/02%20-%20JS%20and%20CSS%20Clock/curve.png" width="300">
 
 ## 03 - CSS Variables
+### html code
+```html
+<h2>Update CSS Variables with <span class='hl'>JS</span></h2>
+
+<div class="controls">
+  <label for="spacing">Spacing:</label>
+  <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
+
+  <label for="blur">Blur:</label>
+  <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+
+  <label for="base">Base Color</label>
+  <input id="base" type="color" name="base" value="#ffc600">
+</div>
+```
 ### CSS code
 ```css
+:root {
+  --base: #ffc600;
+  --spacing: 10px;
+  --blur: 10px;
+}
+
+img {
+  padding: var(--spacing);
+  background: var(--base);
+  filter: blur(var(--blur));
+}
+
+.hl {
+  color: var(--base);
+}
 ```
 ### JS code
 ```js
+const inputs = document.querySelectorAll('.controls input');
+
+function handleUpdate() {
+  const suffix = this.dataset.sizing || '';
+  document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+}
+
+inputs.forEach(input => input.addEventListener('change', handleUpdate));
+inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
 ```
 
 ### Takeaways
@@ -148,6 +187,17 @@ inputs.forEach(input => input.addEventListener('change', handleUpdate));
 inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
 ```
 'change' event only triggers the event when you stop moving the bar; 'mousemove' event will keep updating the value while moving.
+
+#### use dataset
+```html
+<input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
+```
+We can have `data-sizing`, `data-cool`, `data-anyname`... then get access to the value by dataset.anyname
+```js
+const suffix = this.dataset.sizing || '';
+```
+For some elements, sizing is undefined, then return ''
+
 
 # The original README:
 
