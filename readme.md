@@ -124,6 +124,21 @@ By default, it rotates around the center of the element. We want to put the pivo
 Click the curve symbol to manually adjust the curve for `transition-timing-function`:
 <img src="https://github.com/stellashen/JavaScript30/blob/master/02%20-%20JS%20and%20CSS%20Clock/curve.png" width="300">
 
+## 03 - CSS Variables
+### CSS code
+```css
+```
+### JS code
+```js
+```
+
+### Takeaways
+#### CSS variable
+`padding: var(--spacing);` is using the `--spacing` variable.
+
+#### `forEach` method of `NodeList`
+Now we can use the `forEach` method of `NodeList` to loop over the HTML elements.
+So we don't need to convert the NodeList to an array.
 
 # The original README:
 
