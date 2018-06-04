@@ -261,7 +261,7 @@ const de = links.map(link => link.textContent);
 const links = Array.from(category.querySelectorAll('a'));
 const de = links.map(link => link.textContent);
 ```
-<img src="https://github.com/stellashen/JavaScript30/blob/master/04%20-%20Array%20Cardio%20Day%201/6.png" width="300">
+<img src="https://github.com/stellashen/JavaScript30/blob/master/04%20-%20Array%20Cardio%20Day%201/6.png" width="800">
 
 
 
