@@ -198,6 +198,57 @@ const suffix = this.dataset.sizing || '';
 ```
 For some elements, sizing is undefined, then return ''
 
+## 04 - Array Cardio Day 1
+### JS code
+
+### Takeaways
+#### simplify code to one line
+example 1:
+```js
+const fifteen = inventors.filter(inventor => {
+  if (inventor.year >= 1500 && inventor.year < 1600) {
+    return true; //keep it
+  }
+});
+// simplify code:
+const fifteen = inventors.filter(inventor => (inventor.year >= 1500 && inventor.year < 1600));
+// () is optional:
+const fifteen = inventors.filter(inventor => inventor.year >= 1500 && inventor.year < 1600);
+```
+
+example 2:
+```js
+// 3. Sort the inventors by birthdate, oldest to youngest
+const ordered = inventors.sort(function(a, b) {
+  if(a.year > b.year) {
+    return 1;
+  } else {
+    return -1;
+  }
+});
+// simplify
+const ordered = inventors.sort((a, b) => a.year > b.year ?  1 : -1);
+```
+
+#### reduce: intialize total to 0
+```js
+// 4. How many years did all the inventors live?
+const totalYears = inventors.reduce((total, inventor) => {
+  return total + (inventor.passed - inventor.year);
+}, 0);
+```
+If we don't add 0 here, total will be undefined.
+
+#### turn NodeList to array if you want to use `map`
+```js
+// wrong:
+const links = category.querySelectorAll('a');
+const de = links.map(link => link.textContent);
+// correct:
+const links = Array.from(category.querySelectorAll('a'));
+const de = links.map(link => link.textContent);
+```
+<img src="" width="300">
 
 # The original README:
 
