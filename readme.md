@@ -199,8 +199,6 @@ const suffix = this.dataset.sizing || '';
 For some elements, sizing is undefined, then return ''
 
 ## 04 - Array Cardio Day 1
-### JS code
-
 ### Takeaways
 #### simplify code to one line
 example 1:
@@ -230,7 +228,8 @@ const ordered = inventors.sort(function(a, b) {
 const ordered = inventors.sort((a, b) => a.year > b.year ?  1 : -1);
 ```
 
-#### reduce: intialize total to 0
+#### reduce: intialize undefined parameter
+example 1:
 ```js
 // 4. How many years did all the inventors live?
 const totalYears = inventors.reduce((total, inventor) => {
@@ -238,6 +237,20 @@ const totalYears = inventors.reduce((total, inventor) => {
 }, 0);
 ```
 If we don't add 0 here, total will be undefined.
+
+example 2:
+```js
+// 8. Reduce Exercise
+// Sum up the instances of each of these
+const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+const transportation = data.reduce((obj, item) => {
+  if (!obj[item]) {
+    obj[item] = 0;
+  }
+  obj[item]++;
+  return obj;
+}, {});
+```
 
 #### turn NodeList to array if you want to use `map`
 ```js
@@ -248,7 +261,9 @@ const de = links.map(link => link.textContent);
 const links = Array.from(category.querySelectorAll('a'));
 const de = links.map(link => link.textContent);
 ```
-<img src="" width="300">
+<img src="https://github.com/stellashen/JavaScript30/blob/master/04%20-%20Array%20Cardio%20Day%201/6.png" width="300">
+
+
 
 # The original README:
 
