@@ -263,7 +263,23 @@ const de = links.map(link => link.textContent);
 ```
 <img src="https://github.com/stellashen/JavaScript30/blob/master/04%20-%20Array%20Cardio%20Day%201/6.png" width="800">
 
+## 05 - Flex Panel Gallery
+### JS code
 
+### Takeaways
+#### flex
+```css
+/* To make children side by side, add to parent: */
+.panels {
+  display: flex;
+}
+/* Then there is extra space unused by children. */
+
+/* let children evenly distribute the extra space: */
+.panel {
+  flex:1
+}
+```
 
 # The original README:
 
