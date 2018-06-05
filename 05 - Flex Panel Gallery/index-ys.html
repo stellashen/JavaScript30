@@ -76,11 +76,11 @@
 
     /* show the first child and the last child when class 'open-active' is added */
     .panel.open-active > *:first-child {
-      transform: translateY(-100%);
+      transform: translateY(0);
     }
 
     .panel.open-active > *:last-child {
-      transform: translateY(100%);
+      transform: translateY(0);
     }
 
     .panel p {
@@ -136,7 +136,15 @@
       this.classList.toggle('open');
     }
 
+    function toggleActive(e) {
+      // e.propertyName is "flex-grow" for Chrome/Firefox and "flex" for Safari
+      if (e.propertyName.includes('flex')) {
+        this.classList.toggle('open-active');
+      }
+    }
+
     panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+    panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
 
   </script>
 

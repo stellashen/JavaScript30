@@ -265,6 +265,23 @@ const de = links.map(link => link.textContent);
 
 ## 05 - Flex Panel Gallery
 ### JS code
+```js
+const panels = document.querySelectorAll('.panel');
+
+function toggleOpen() {
+  this.classList.toggle('open');
+}
+
+function toggleActive(e) {
+  // e.propertyName is "flex-grow" for Chrome/Firefox and "flex" for Safari
+  if (e.propertyName.includes('flex')) {
+    this.classList.toggle('open-active');
+  }
+}
+
+panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
+```
 
 ### Takeaways
 #### flex
@@ -294,11 +311,26 @@ const de = links.map(link => link.textContent);
 
 /* show the first child and the last child when class 'open-active' is added */
 .panel.open-active > *:first-child {
-  transform: translateY(-100%);
+  transform: translateY(0);
 }
 
 .panel.open-active > *:last-child {
-  transform: translateY(100%);
+  transform: translateY(0);
+}
+```
+
+#### CSS animation using `transition`
+```css
+.panel {
+  transition:
+    font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+    flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+    background 0.2s;
+  font-size: 20px;
+}
+.panel.open {
+  font-size:40px;
+  flex: 5;
 }
 ```
 
