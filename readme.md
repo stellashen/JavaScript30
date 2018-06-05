@@ -281,6 +281,27 @@ const de = links.map(link => link.textContent);
 }
 ```
 
+#### CSS animation using `transform`
+```css
+/* hide the first child and the last child */
+.panel > *:first-child {
+  transform: translateY(-100%);
+}
+
+.panel > *:last-child {
+  transform: translateY(100%);
+}
+
+/* show the first child and the last child when class 'open-active' is added */
+.panel.open-active > *:first-child {
+  transform: translateY(-100%);
+}
+
+.panel.open-active > *:last-child {
+  transform: translateY(100%);
+}
+```
+
 # The original README:
 
 ![](https://javascript30.com/images/JS3-social-share.png)
