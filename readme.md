@@ -334,6 +334,40 @@ panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
 }
 ```
 
+## 06 - Type Ahead
+### JS code
+```js
+```
+
+### Takeaways
+#### the spread operator
+More examples from https://codeburst.io/javascript-es6-the-spread-syntax-f5c35525f754
+```js
+var mid = [3, 4];
+var arr = [1, 2, ...mid, 5, 6];
+
+console.log(arr); //[1, 2, 3, 4, 5, 6]
+
+var arr = [2, 4, 8, 6, 0];
+var max = Math.max(...arr);
+
+console.log(max); //8
+
+// deep copy
+var arr = ['a', 'b', 'c'];
+var arr2 = [...arr];
+
+arr2.push('d');
+
+console.log(arr);//['a', 'b', 'c']
+
+// string to array
+var str = "hello";
+var chars = [...str];
+
+console.log(chars); //["h", "e", "l", "l", "o"]
+```
+
 # The original README:
 
 ![](https://javascript30.com/images/JS3-social-share.png)
