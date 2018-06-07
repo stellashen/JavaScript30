@@ -412,6 +412,19 @@ var chars = [...str];
 console.log(chars); //["h", "e", "l", "l", "o"]
 ```
 
+## 07 - Array Cardio Day 2
+### Takeaways
+#### two ways to remove 1 element from index
+```js
+// remove from original array
+comments.splice(index, 1);
+// create new array
+const newComments = [
+  ...comments.slice(0, index),
+  ...comments.slice(index + 1)
+];
+```
+
 # The original README:
 
 ![](https://javascript30.com/images/JS3-social-share.png)
