@@ -425,6 +425,18 @@ const newComments = [
 ];
 ```
 
+## 08 - Fun with HTML5 Canvas
+### Takeaways
+#### lineJoin and lineCap properties
+`ctx.lineJoin = "bevel" || "round" || "miter";`
+
+Example: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineJoin
+
+`ctx.lineCap = "butt" || "round" || "square";`
+Example: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineCap
+
+Example:
+
 # The original README:
 
 ![](https://javascript30.com/images/JS3-social-share.png)
