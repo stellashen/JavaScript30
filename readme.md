@@ -435,7 +435,17 @@ Example: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext
 `ctx.lineCap = "butt" || "round" || "square";`
 Example: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineCap
 
-Example:
+#### hsl rainbow colors
+http://mothereffinghsl.com/
+
+```js
+let hue = 0;
+function draw(e) {
+  ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+  //...
+  hue++;
+}
+```
 
 # The original README:
 
