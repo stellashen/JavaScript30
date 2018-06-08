@@ -14,6 +14,7 @@ canvas.height = window.innerHeight;
 ctx.strokeStyle = '#BADA55';
 ctx.lineJoin = 'round';
 ctx.lineCap = 'round';
+ctx.lineWidth = 50;
 
 let isDrawing = false; //flag to tell whether to draw
 let lastX = 0;
@@ -27,13 +28,15 @@ function draw(e) {
   ctx.moveTo(lastX, lastY);
   // go to
   ctx.lineTo(e.offsetX, e.offsetY);
-  lastX = e.offsetX;
-  lastY = e.offsetY;
   ctx.stroke();
+  [lastX, lastY] = [e.offsetX, e.offsetY];
 }
 
 canvas.addEventListener('mousemove', draw);
-canvas.addEventListener('mousedown', () => isDrawing = true);
+canvas.addEventListener('mousedown', (e) => {
+  isDrawing = true;
+  [lastX, lastY] = [e.offsetX, e.offsetY];
+});
 canvas.addEventListener('mouseup', () => isDrawing = false);
 canvas.addEventListener('mouseout', () => isDrawing = false);
 
