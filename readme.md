@@ -585,6 +585,37 @@ console:
 <img src="https://github.com/stellashen/JavaScript30/blob/master/09%20-%20Dev%20Tools%20Domination/1.png" width="600">
 <img src="https://github.com/stellashen/JavaScript30/blob/master/09%20-%20Dev%20Tools%20Domination/2.png" width="600">
 
+## 10 - Hold Shift and Check Checkboxes
+### JS code
+```js
+const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
+
+let lastChecked;
+
+function handleCheck(e) {
+  // check if they had the shift key down
+  // AND check that they are checking it
+  let inBetween = false;
+  if (e.shiftKey && this.checked) {
+    checkboxes.forEach(checkbox => {
+      if (checkbox === this || checkbox === lastChecked) {
+        inBetween = !inBetween;
+        // inBetween becomes true at the starting point,
+        // and becomes false at the end
+      }
+
+      if (inBetween) {
+        checkbox.checked = true;
+      }
+    })
+  }
+  lastChecked = this;
+}
+
+checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck));
+
+```
+
 # The original README:
 
 ![](https://javascript30.com/images/JS3-social-share.png)
