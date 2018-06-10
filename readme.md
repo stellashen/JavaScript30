@@ -1,4 +1,3 @@
-
 # My study notes
 ## 01 - Drum Kit
 ### JS Code
@@ -613,7 +612,26 @@ function handleCheck(e) {
 }
 
 checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck));
+```
 
+## 11 - Custom Video Player
+### Takeaways
+#### conditionally call a method
+```js
+function togglePlay() {
+  const method = video.paused ? 'play' : 'pause';
+  video[method]();
+}
+```
+This is the same with:
+```js
+function togglePlay() {
+  if (video.paused) {
+    video.play();
+  } else {
+    video.pause();
+  }
+}
 ```
 
 # The original README:
