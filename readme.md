@@ -696,6 +696,27 @@ function togglePlay() {
 }
 ```
 
+## 12 - Key Sequence Detection
+### JS Code
+```js
+const pressed = [];
+const secretCode = 'wesbos';
+
+window.addEventListener('keyup', e => {
+  pressed.push(e.key);
+  // only keep 6 letters in the pressed array
+  //splice(start, deleteCount)
+  // here we start from -7 and delete 1, so it will delete the key at index -7
+  pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+  if (pressed.join('').includes(secretCode)) {
+    console.log('DING DING!');
+    cornify_add(); //add random stuff to the screen, unicorns, rainbows...
+  }
+  console.log(pressed);
+})
+```
+
+
 # The original README:
 
 ![](https://javascript30.com/images/JS3-social-share.png)
