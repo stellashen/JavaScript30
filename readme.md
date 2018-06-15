@@ -716,6 +716,71 @@ window.addEventListener('keyup', e => {
 })
 ```
 
+## 13 - Slide in on scroll
+### JS code
+```js
+// only run func once every 20ms
+  function debounce(func, wait = 20, immediate = true) {
+    var timeout;
+    return function() {
+      var context = this, args = arguments;
+      var later = function() {
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+      };
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) func.apply(context, args);
+    };
+  }
+
+  const sliderImages = document.querySelectorAll('.slide-in');
+
+  function checkSlide() {
+    sliderImages.forEach(sliderImage => {
+      // window.scrollY: how far down you haved scrolled from the top
+      // window.scrollY + window.innerHeight will give us the pixel number of the bottom
+      // slide the image in when half of the image is above the window bottom
+      const slideInAt = (window.scrollY + window.innerHeight) - sliderImage.height / 2;
+      // offsetTop: how far the image top is from the window top
+      // imageBottom: bottom of the image
+      const imageBottom = sliderImage.offsetTop + sliderImage.height;
+      const isHalfShown = slideInAt > sliderImage.offsetTop;
+      const isNotScrolledPast = window.scrollY < imageBottom;
+      if (isHalfShown && isNotScrolledPast) {
+        sliderImage.classList.add('active');
+      } else {
+        sliderImage.classList.remove('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', debounce(checkSlide));
+
+```
+
+### Takeaways
+- debounce the scroll function
+- use CSS `transform` to create the animation:
+```css
+.slide-in {
+  opacity:0;
+  transition:all .5s;
+}
+
+.align-left.slide-in {
+  transform:translateX(-30%) scale(0.95);
+}
+.align-right.slide-in {
+  transform:translateX(30%) scale(0.95);
+}
+
+.slide-in.active {
+  opacity:1;
+  transform:translateX(0%) scale(1);
+}
+```
 
 # The original README:
 
