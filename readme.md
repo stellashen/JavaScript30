@@ -782,6 +782,54 @@ window.addEventListener('keyup', e => {
 }
 ```
 
+## 14 - JavaScript References VS Copying
+This exercise is about object reference and copying.
+
+### Takeaways
+#### ways to create a new array (1 level deep copying)
+- The new array is a copy of an old array
+- The new array has a different reference
+```js
+const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
+
+// one way
+const team2 = players.slice();
+
+// or create a new array and concat the old one in
+const team3 = [].concat(players);
+
+// or use the new ES6 Spread
+const team4 = [...players];
+
+// use Array.from
+const team5 = Array.from(players);
+
+// now when we update it, the original one isn't changed
+```
+#### ways to create a new object (1 level deep copying)
+```js
+// with Objects
+const wes = {
+  name: 'Wes',
+  age: 100,
+  social: {
+    twitter: '@wesbos',
+    facebook: 'wesbos.developer'
+  }
+};
+
+const dev = Object.assign({}, wes);
+
+// note it's only 1 level deep copy
+// if you change dev.age, wes will not change
+// but if you change dev.social.twitter, wes.social.twitter will be changed too
+
+// deep copying
+const dev2 = JSON.parse(JSON.stringify(wes));
+// if you change dev2.social.twitter, wes.social.twitter will not be changed
+// because JSON.stringify(wes) returns a String
+```
+
 # The original README:
 
 ![](https://javascript30.com/images/JS3-social-share.png)
