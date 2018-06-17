@@ -830,6 +830,20 @@ const dev2 = JSON.parse(JSON.stringify(wes));
 // because JSON.stringify(wes) returns a String
 ```
 
+## 15 - Local Storage
+### JS Code
+```js
+```
+
+### Takeaways
+#### querySelector for `name="item"`
+```html
+<input type="text" name="item" placeholder="Item Name" required>
+```
+```js
+const text = (this.querySelector('[name=item]')).value;
+```
+
 # The original README:
 
 ![](https://javascript30.com/images/JS3-social-share.png)
