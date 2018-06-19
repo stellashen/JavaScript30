@@ -906,7 +906,7 @@ Use CSS to show different content before checked/unchecked item:
 ```
 
 ## 16 - Mouse Move Shadow
-###JS code
+### JS code
 ```js
 const hero = document.querySelector('.hero');
 const text = hero.querySelector('h1');
@@ -946,7 +946,7 @@ function shadow(e) {
 hero.addEventListener('mousemove', shadow);
 ```
 
-###Takeaways
+### Takeaways
 #### destructure an HTMLelement
 ```js
 const hero = document.querySelector('.hero');
@@ -965,6 +965,27 @@ const { offsetWidth: width, offsetHeight: height } = hero;
 
 #### deal with nested elements
 When you have nested elements under the element where the event listener is on, event can be triggered by the parent element or the children elements nested inside.
+
+## 17 - Sort Without Articles
+### JS code
+```js
+const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
+
+function strip(bandName) {
+  return bandName.replace(/^(a |the |an )/i, '').trim();
+  // replace 'a', 'the', 'an' with ''
+  // The trim() method removes whitespace from both ends of a string.
+}
+
+const sortedBands = bands.sort((a, b) => strip(a) > strip(b) ? 1 : -1);
+
+document.querySelector('#bands').innerHTML =
+  sortedBands
+    .map(band => `<li>${band}</li>`)
+    .join('');
+
+console.log(sortedBands);
+```
 
 # The original README:
 
