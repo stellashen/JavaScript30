@@ -907,6 +907,44 @@ Use CSS to show different content before checked/unchecked item:
 
 ## 16 - Mouse Move Shadow
 ###JS code
+```js
+const hero = document.querySelector('.hero');
+const text = hero.querySelector('h1');
+
+function shadow(e) {
+  // const width = hero.offsetWidth;
+  // const height = hero.offsetHeight;
+  const { offsetWidth: width, offsetHeight: height } = hero;
+  console.log(width, height);//745, 693
+  const walk = 500; // 500px
+
+  let { offsetX: x, offsetY: y } = e;
+
+  // console.log(x, y);
+
+  // this: the element that you listened on - in this case, the hero element
+  // e.target: the element that triggers the event, it could be hero or h1
+  // when e.target is h1, we need to adjust the values of x and y
+  if (this !== e.target) {
+    x = x + e.target.offsetLeft;
+    y = y + e.target.offsetTop;
+  }
+
+  // x: 0 ~ 100
+  // xWalk: -50 ~ 50  Purpose of this formula is to get this range.
+  const xWalk = Math.round((x / width * walk) - (walk / 2));
+  const yWalk = Math.round((y / height * walk) - (walk / 2));
+
+  text.style.textShadow = `
+    ${xWalk}px ${yWalk}px 0 rgba(255,0,255,0.7),
+    ${xWalk * -1}px ${yWalk}px 0 rgba(0,255,255,0.7),
+    ${yWalk}px ${xWalk * -1}px 0 rgba(0,255,0,0.7),
+    ${yWalk * -1}px ${xWalk}px 0 rgba(0,0,255,0.7)
+  `;
+}
+
+hero.addEventListener('mousemove', shadow);
+```
 
 ###Takeaways
 #### destructure an HTMLelement
@@ -921,6 +959,12 @@ const { offsetWidth: width, offsetHeight: height } = hero;
 ```
 - destructure offsetWidth from hero element, and assign offsetWidth to the new variable width.
 - offsetWidth is border-box width: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetWidth
+
+#### use offsetX and offsetY to get mouse position
+`e.offsetX` and `e.offsetY` (`e` is 'mousemove' event)
+
+#### deal with nested elements
+When you have nested elements under the element where the event listener is on, event can be triggered by the parent element or the children elements nested inside.
 
 # The original README:
 
