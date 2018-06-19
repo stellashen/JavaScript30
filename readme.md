@@ -905,6 +905,23 @@ Use CSS to show different content before checked/unchecked item:
 }
 ```
 
+## 16 - Mouse Move Shadow
+###JS code
+
+###Takeaways
+#### destructure an HTMLelement
+```js
+const hero = document.querySelector('.hero');
+const width = hero.offsetWidth;
+const height = hero.offsetHeight;
+```
+same as:
+```js
+const { offsetWidth: width, offsetHeight: height } = hero;
+```
+- destructure offsetWidth from hero element, and assign offsetWidth to the new variable width.
+- offsetWidth is border-box width: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetWidth
+
 # The original README:
 
 ![](https://javascript30.com/images/JS3-social-share.png)
