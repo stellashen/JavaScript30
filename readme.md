@@ -988,8 +988,33 @@ console.log(sortedBands);
 ```
 
 ## 18 - Adding Up Times with Reduce
+calculate the total time of videos:
 ### JS Code
 ```js
+const timeNodes = Array.from(document.querySelectorAll('[data-time]'));
+// document.querySelectorAll('[data-time]') is a NodeList
+// turn the NodeList into an array of <li>...</li>
+const seconds = timeNodes
+  .map(node => node.dataset.time)
+  .map(timeCode => {
+    const [mins, secs] = timeCode.split(':').map(parseFloat);
+    return (mins * 60) + secs;
+  })
+  .reduce((total, videoSeconds) => total + videoSeconds);
+
+// timeCode is a String in the format "5:43"
+// timeCode.split(':') will give us ["5", "43"]
+// .map(parseFloat) will turn each element in the array to float,
+// to get [5, 43]
+
+let secondsLeft = seconds;
+const hours = Math.floor(secondsLeft / 3600);
+secondsLeft = secondsLeft % 3600;
+
+const mins = Math.floor(secondsLeft / 60);
+secondsLeft = secondsLeft % 60;
+
+console.log(hours, mins, secondsLeft);
 ```
 
 # The original README:
