@@ -987,6 +987,11 @@ document.querySelector('#bands').innerHTML =
 console.log(sortedBands);
 ```
 
+## 18 - Adding Up Times with Reduce
+### JS Code
+```js
+```
+
 # The original README:
 
 ![](https://javascript30.com/images/JS3-social-share.png)
