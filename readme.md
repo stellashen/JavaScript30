@@ -1018,7 +1018,9 @@ console.log(hours, mins, secondsLeft);
 ```
 
 ## 19 - Webcam fun
+Install node.js.
 
+cd to the 19 folder, and run `npm install` and `npm start` to run the server.
 
 # The original README:
 
