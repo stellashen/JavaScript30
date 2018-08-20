@@ -1022,6 +1022,8 @@ Install node.js.
 
 cd to the 19 folder, and run `npm install` and `npm start` to run the server.
 
+In the console, run: `paintToCanvas();` to paint the video on the top right corner to larger canvas; run `takePhoto()` to take a photo.
+
 # The original README:
 
 ![](https://javascript30.com/images/JS3-social-share.png)
