@@ -1024,6 +1024,10 @@ cd to the 19 folder, and run `npm install` and `npm start` to run the server.
 
 In the console, run: `paintToCanvas();` to paint the video on the top right corner to larger canvas; run `takePhoto()` to take a photo.
 
+Get image data in pixels, then manipulate the pixels array's RGB values to generate effects.
+
+The greenScreen effect enables you to use the filters on the page.
+
 # The original README:
 
 ![](https://javascript30.com/images/JS3-social-share.png)
